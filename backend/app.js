@@ -24,6 +24,8 @@ const allowedCors = [
   'https://praktikum.tk',
   'http://praktikum.tk',
   'localhost:3000',
+  'http://api.mesto.galamm.nomoreparties.sbs',
+  'https://api.mesto.galamm.nomoreparties.sbs',
 ];
 
 const app = express();
@@ -52,6 +54,8 @@ app.use((req, res, next) => {
   }
 
   next();
+
+  // return res;
 });
 
 app.use('/', routesUser, routesCard);
