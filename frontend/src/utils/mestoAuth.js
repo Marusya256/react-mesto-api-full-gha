@@ -26,6 +26,7 @@ class MestoAuth {
   authorize(email, password) {
     return fetch(`${BASE_URL}/signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,7 +40,7 @@ class MestoAuth {
       method: 'GET', 
       headers: {
         "Content-Type": "application/json",
-        "Authorization" : `Bearer ${token}`
+        // "Authorization" : `Bearer ${token}`
       }
     })
     .then(this._checkResponse);

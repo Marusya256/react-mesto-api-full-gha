@@ -10,7 +10,7 @@ const { celebrate, Joi } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const cors = require('cookie-parser');
+const cors = require('cors');
 
 const mongoose = require('mongoose');
 
@@ -22,23 +22,21 @@ const routesUser = require('./routes/users');
 const routesCard = require('./routes/card');
 const { createUser, login } = require('./controllers/users');
 
-const allowedCors = [
-  'http://api.mesto.galamm.nomoreparties.sbs',
-  'https://api.mesto.galamm.nomoreparties.sbs',
-  'http://mesto.galamm.nomoreparties.sbs',
-  'https://mesto.galamm.nomoreparties.sbs',
-  'https://praktikum.tk',
-  'http://praktikum.tk',
-  'localhost:3000',
-];
-
 const app = express();
+
+app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true' }));
 
 app.use(cookieParser());
 
 app.use(bodyParser.json());
 
 app.use(requestLogger);
+
+const allowedCors = [
+  'http://mesto.galamm.nomoreparties.sbs',
+  'https://mesto.galamm.nomoreparties.sbs',
+  'localhost:3000',
+];
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
