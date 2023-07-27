@@ -43,7 +43,7 @@ const Register = (props) => {
 
   return (
     <main className="">
-      <Header buttonText={'Войти'} toLink={"/sign-n"} userEmail={props.userEmail} onClick={props.onClick}/>
+      <Header buttonText={'Войти'} toLink={"/signin"} userEmail={props.userEmail} onClick={props.onClick}/>
       <div className="content">
         <form className="login__form" onSubmit={handleSubmit}>
           <h2 className="form__header">Регистрация</h2>
