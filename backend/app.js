@@ -20,6 +20,12 @@ const routesUser = require('./routes/users');
 const routesCard = require('./routes/card');
 const { createUser, login } = require('./controllers/users');
 
+const allowedCors = [
+  'https://praktikum.tk',
+  'http://praktikum.tk',
+  'localhost:3000',
+];
+
 const app = express();
 
 app.use(cookieParser());
@@ -27,6 +33,26 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use(requestLogger);
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  const { method } = req;
+
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+
+    return res.end();
+  }
+
+  next();
+});
 
 app.use('/', routesUser, routesCard);
 
