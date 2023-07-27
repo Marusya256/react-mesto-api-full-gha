@@ -16,14 +16,12 @@ class Api {
 
   getInfoOwner() {
     return this._makeRequest('/users/me', {
-      credentials: 'include',
       headers: this._options.headers
     });
   }
 
   getInitialCards() {
     return this._makeRequest('/cards/', {
-      credentials: 'include',
       headers: this._options.headers
     });
   }
@@ -31,7 +29,6 @@ class Api {
   setInfoUser(name, about) {
     return this._makeRequest('/users/me', {
       method: 'PATCH', 
-      credentials: 'include',
       headers: this._options.headers,
       body: JSON.stringify({
         name: name,
@@ -43,7 +40,6 @@ class Api {
   postCards(item) {
     return this._makeRequest('/cards/', {
       method: 'POST', 
-      credentials: 'include',
       headers: this._options.headers,
       body: JSON.stringify({
         name: item.name,
@@ -55,7 +51,6 @@ class Api {
   deleteCard(cardId) {
     return this._makeRequest('/cards/' + cardId, {
       method: 'DELETE', 
-      credentials: 'include',
       headers: this._options.headers
     });
   }
@@ -63,7 +58,6 @@ class Api {
   updateAvatar(link) {
     return this._makeRequest('/users/me/avatar', {
       method: 'PATCH', 
-      credentials: 'include',
       headers: this._options.headers,
       body: JSON.stringify({
         avatar: link
@@ -74,7 +68,6 @@ class Api {
   updateLike(cardId, isLiked) {
     return this._makeRequest('/cards/' + cardId + '/likes', {
         method: isLiked ? 'DELETE' : 'PUT', 
-        credentials: 'include',
         headers: this._options.headers
     });
   }

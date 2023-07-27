@@ -24,14 +24,7 @@ const { createUser, login } = require('./controllers/users');
 
 const app = express();
 
-app.use(cors({ origin: [
-  'http://mesto.galamm.nomoreparties.sbs',
-  'https://mesto.galamm.nomoreparties.sbs',
-  'http://api.mesto.galamm.nomoreparties.sbs',
-  'https://api.mesto.galamm.nomoreparties.sbs',
-  'localhost:3000'],
-credentials: 'true',
-}));
+app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true' }));
 
 app.use(cookieParser());
 
@@ -42,8 +35,8 @@ app.use(requestLogger);
 const allowedCors = [
   'http://mesto.galamm.nomoreparties.sbs',
   'https://mesto.galamm.nomoreparties.sbs',
-  'http://api.mesto.galamm.nomoreparties.sbs',
-  'https://api.mesto.galamm.nomoreparties.sbs',
+  'http://mesto.galamm.nomoreparties.sbs',
+  'https://mesto.galamm.nomoreparties.sbs',
   'localhost:3000',
 ];
 
