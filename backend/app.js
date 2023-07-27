@@ -10,6 +10,8 @@ const { celebrate, Joi } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const cors = require('cookie-parser');
+
 const mongoose = require('mongoose');
 
 const { errors } = require('celebrate');
@@ -21,11 +23,13 @@ const routesCard = require('./routes/card');
 const { createUser, login } = require('./controllers/users');
 
 const allowedCors = [
+  'http://api.mesto.galamm.nomoreparties.sbs',
+  'https://api.mesto.galamm.nomoreparties.sbs',
+  'http://mesto.galamm.nomoreparties.sbs',
+  'https://mesto.galamm.nomoreparties.sbs',
   'https://praktikum.tk',
   'http://praktikum.tk',
   'localhost:3000',
-  'http://api.mesto.galamm.nomoreparties.sbs',
-  'https://api.mesto.galamm.nomoreparties.sbs',
 ];
 
 const app = express();
