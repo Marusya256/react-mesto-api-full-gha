@@ -74,7 +74,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: '',
+  baseUrl: 'https://api.mesto.galamm.nomoreparties.sbs',
   headers: {
     'Content-Type': 'application/json'
   }

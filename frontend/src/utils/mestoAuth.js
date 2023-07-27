@@ -1,4 +1,4 @@
-export const BASE_URL = '';
+export const BASE_URL = 'https://api.mesto.galamm.nomoreparties.sbs';
 
 class MestoAuth {
   constructor(options) {
