@@ -1,0 +1,28 @@
+.button_type_add {
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #fff;
+    margin: 35px 0 0 244px;
+    cursor: pointer;
+    background-image: url(./../../../images/pluse.svg);
+    background-size: 22px;
+    border-radius: 2px;
+}
+
+.button_type_add:hover {
+    opacity: 0.6;
+}
+
+@media all and (max-width: 1023px) {
+    .button_type_add {
+        margin-left: 54px;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .button_type_add {
+        margin: 31px 0 0 0;
+        width: 282px;
+    }
+}

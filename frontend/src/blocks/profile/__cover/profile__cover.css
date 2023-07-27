@@ -1,0 +1,9 @@
+.profile__cover {
+    display: flex;
+}
+
+@media all and (max-width: 767px) {
+    .profile__cover {
+        position: relative;
+    }
+}

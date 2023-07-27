@@ -1,0 +1,6 @@
+.gallery-item__cover-like {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
