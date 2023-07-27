@@ -28,7 +28,7 @@ function Main(props) {
   function signOut(){
     localStorage.removeItem('jwt');
     localStorage.removeItem('token');
-    navigate('/sign-in', {replace: true});
+    navigate('/signin', {replace: true});
   }
 
 

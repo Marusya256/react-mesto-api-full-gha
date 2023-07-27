@@ -45,7 +45,7 @@ function Login(props) {
 
   return (
     <main>
-      <Header buttonText={'Регистрация'} toLink={"/sign-up"} userEmail={props.userEmail} onClick={props.onClick}/>
+      <Header buttonText={'Регистрация'} toLink={"/signup"} userEmail={props.userEmail} onClick={props.onClick}/>
       <div className="form__cover">
         <form className="login__form" onSubmit={handleSubmit}>
           <h2 className="form__header">Вход</h2>

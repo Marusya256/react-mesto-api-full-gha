@@ -34,7 +34,7 @@ const Register = (props) => {
     .then(() => {
       onRegisteredSuccess();
     })
-    .then(() => navigate('/sign-in', {replace: true}))
+    .then(() => navigate('/signin', {replace: true}))
     .catch(err => {
       onRegisteredFailed();
       });
@@ -43,7 +43,7 @@ const Register = (props) => {
 
   return (
     <main className="">
-      <Header buttonText={'Войти'} toLink={"/sign-in"} userEmail={props.userEmail} onClick={props.onClick}/>
+      <Header buttonText={'Войти'} toLink={"/sign-n"} userEmail={props.userEmail} onClick={props.onClick}/>
       <div className="content">
         <form className="login__form" onSubmit={handleSubmit}>
           <h2 className="form__header">Регистрация</h2>
@@ -57,7 +57,7 @@ const Register = (props) => {
               <span className="popup__input-error aboutuser-error"></span>
             </div>
             <button className="button button_type_sub button_type_login" type="submit">Зарегистрироваться</button>
-            <p className="form__text-register">Уже зарегистрированы? <Link to="/sign-in" className="form__link-register">Войти</Link></p>
+            <p className="form__text-register">Уже зарегистрированы? <Link to="/signin" className="form__link-register">Войти</Link></p>
           </fieldset>
         </form>
       </div>

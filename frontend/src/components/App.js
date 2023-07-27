@@ -187,9 +187,9 @@ function App() {
             <ImagePopup card={selectedCard} onClose={closeAllPopups}/>    
             <DeleteCard />
             <Routes>
-              <Route  path="/sign-up" element={<Register onRegisteredFailed={handleRegisteredFailed} onRegisteredSuccess={handleRegisteredSuccess}/>}/>
-              <Route  path="/sign-in" element={<Login handleLogin={tokenCheck}/>}/>
-              <Route  path="/" element={loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/sign-in" replace />} />
+              <Route  path="/signup" element={<Register onRegisteredFailed={handleRegisteredFailed} onRegisteredSuccess={handleRegisteredSuccess}/>}/>
+              <Route  path="/signin" element={<Login handleLogin={tokenCheck}/>}/>
+              <Route  path="/" element={loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />} />
               <Route path="/my-profile" element={<ProtectedRoute loggedIn={loggedIn} cards={cards} handleCardClick={handleCardClick} handleCardLike={handleCardLike} handleCardDelete={handleCardDelete} setCards={setCards} openEditProfile={handleEditProfileClick} openAddPlace={handleAddPlaceClick} editAvatar={handleEditAvatarClick} userEmail={userEmail} element={Main}/>}/>
             </Routes>
             <Footer />            
