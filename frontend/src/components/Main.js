@@ -26,7 +26,7 @@ function Main(props) {
   const navigate = useNavigate();
 
   function signOut(){
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt'); // ?
     localStorage.removeItem('token');
     navigate('/signin', {replace: true});
   }
