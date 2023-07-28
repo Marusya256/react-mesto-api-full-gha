@@ -42,7 +42,7 @@ function Login(props) {
       })
       .catch(err => {
         onRegisteredFailed();
-        });
+      });
   }
 
   return (

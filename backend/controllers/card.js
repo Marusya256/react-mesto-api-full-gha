@@ -18,7 +18,7 @@ const postCard = (req, res, next) => {
     name, link, owner: req.user._id, likes,
   })
     .then((card) => {
-      res.send(card);
+      res.status(201).send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {

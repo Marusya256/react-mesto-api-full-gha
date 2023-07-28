@@ -37,7 +37,7 @@ const Register = (props) => {
     .then(() => navigate('/signin', {replace: true}))
     .catch(err => {
       onRegisteredFailed();
-      });
+    });
   }
 
 

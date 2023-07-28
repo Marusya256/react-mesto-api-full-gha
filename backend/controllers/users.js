@@ -56,7 +56,7 @@ const createUser = (req, res, next) => {
       const newUser = {
         name: user.name, about: user.about, avatar: user.avatar, email: user.email,
       };
-      res.send(newUser);
+      res.status(201).send(newUser);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
