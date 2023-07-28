@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.mesto.galamm.nomoreparties.sbs';
+export const BASE_URL = 'https://api.mesto.galamm.nomoreparties.sbs';
 // export const BASE_URL = 'https://localhost:3001';
 
 class MestoAuth {
