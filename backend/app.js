@@ -1,4 +1,4 @@
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 const ERROR_CODE_BASE = 500;
 const ERROR_CODE_NOT_FOUND = 404;
@@ -56,6 +56,7 @@ app.use((req, res, next) => {
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
+    res.header('Access-Control-Allow-Credentials', true);
 
     return res.end();
   }

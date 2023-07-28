@@ -51,7 +51,7 @@ function App() {
     if (jwt) {
       mestoAuth.getContent(jwt)
       .then(res => {
-        handleLogin(res.data.email);
+        handleLogin(res.data.email);  //
         navigate('/my-profile', {replace: true});
       })
       .catch(err => {
