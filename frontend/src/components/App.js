@@ -51,7 +51,7 @@ function App() {
     if (jwt) {
       mestoAuth.getContent(jwt)
       .then(res => {
-        handleLogin(res.email);  //
+        handleLogin(res.email);
         navigate('/my-profile', {replace: true});
       })
       .catch(err => {
@@ -145,8 +145,6 @@ function App() {
   }
 
   //зумирование картинки
-
-  // const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleCardClick(card) {
     setSelectedCard(card);

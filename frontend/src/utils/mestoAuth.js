@@ -1,5 +1,4 @@
 export const BASE_URL = 'https://api.mesto.galamm.nomoreparties.sbs';
-// export const BASE_URL = 'https://localhost:3001';
 
 class MestoAuth {
   constructor(options) {
@@ -42,7 +41,6 @@ class MestoAuth {
       credentials: 'include',
       headers: {
         "Content-Type": "application/json",
-        // "Authorization" : `Bearer ${token}`
       }
     })
     .then(this._checkResponse);
