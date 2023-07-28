@@ -24,7 +24,7 @@ const { createUser, login } = require('./controllers/users');
 
 const app = express();
 
-app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true', preflightContinue: 'true' }));
+app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true' }));
 
 // app.options('*', cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], preflightContinue: 'true' }));
 
@@ -120,37 +120,3 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
   .catch((res) => {
     res.status(ERROR_CODE_BASE).send({ message: 'Ошибка' });
   });
-
-
-//   server {
-//     listen 80;
-
-
-//     server_name api.mesto.galamm.nomoreparties.sbs;
-
-
-//     location / {
-//             proxy_pass http://localhost:3000;
-//             proxy_http_version 1.1;
-//             proxy_set_header Upgrade $http_upgrade;
-//             proxy_set_header Connection 'upgrade';
-//             proxy_set_header Host $host;
-//             proxy_cache_bypass $http_upgrade;
-//     }
-// }
-
-
-// server {
-//     listen 80;
-
-
-//     server_name mesto.galamm.nomoreparties.sbs;;
-
-
-//     root /home/galamdinovam/react-mesto-api-full-gha/frontend;
-
-
-//     location / {
-//       try_files $uri $uri/ /index.html
-//     }
-// }
