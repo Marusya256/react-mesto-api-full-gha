@@ -26,7 +26,7 @@ const app = express();
 
 app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true', preflightContinue: 'true' }));
 
-app.options('*', cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], preflightContinue: 'true' }));
+// app.options('*', cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'localhost:3000'], preflightContinue: 'true' }));
 
 app.use(cookieParser());
 
@@ -34,29 +34,28 @@ app.use(bodyParser.json());
 
 app.use(requestLogger);
 
-const allowedCors = [
-  'http://mesto.galamm.nomoreparties.sbs',
-  'https://mesto.galamm.nomoreparties.sbs',
-  'localhost:3000',
-];
+// const allowedCors = [
+//   'http://mesto.galamm.nomoreparties.sbs',
+//   'https://mesto.galamm.nomoreparties.sbs',
+//   'localhost:3000',
+// ];
 
 app.use((req, res, next) => {
-  const { origin } = req.headers;
+  // const { origin } = req.headers;
 
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  // if (allowedCors.includes(origin)) {
+  //   res.header('Access-Control-Allow-Origin', origin);
+  // }
 
   const { method } = req;
 
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-  const requestHeaders = req.headers['access-control-request-headers'];
-
   if (method === 'OPTIONS') {
+    const requestHeaders = req.headers['access-control-request-headers'];
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.header('Access-Control-Allow-Credentials', true);
+    // res.header('Access-Control-Allow-Credentials', true);
 
     return res.end();
   }
