@@ -10,6 +10,8 @@ function Login(props) {
     userpassword: ''
   })
 
+  const { onRegisteredFailed } = props;
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -39,8 +41,8 @@ function Login(props) {
         }
       })
       .catch(err => {
-        alert(`failed to login, err: ${err}`);
-      });
+        onRegisteredFailed();
+        });
   }
 
   return (
