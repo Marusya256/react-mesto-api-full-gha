@@ -24,6 +24,14 @@ const { createUser, login } = require('./controllers/users');
 
 const app = express();
 
+app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'http://api.mesto.galamm.nomoreparties.sbs', 'https://api.mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true' }));
+
+app.use(cookieParser());
+
+app.use(bodyParser.json());
+
+app.use(requestLogger);
+
 const allowedCors = [
   'http://mesto.galamm.nomoreparties.sbs',
   'https://mesto.galamm.nomoreparties.sbs',
@@ -31,8 +39,6 @@ const allowedCors = [
   'https://api.mesto.galamm.nomoreparties.sbs',
   'localhost:3000',
 ];
-
-app.use(cors({ origin: ['http://mesto.galamm.nomoreparties.sbs', 'https://mesto.galamm.nomoreparties.sbs', 'http://api.mesto.galamm.nomoreparties.sbs', 'https://api.mesto.galamm.nomoreparties.sbs', 'localhost:3000'], credentials: 'true' }));
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
@@ -47,7 +53,7 @@ app.use((req, res, next) => {
 
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Cookie');
+    res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,content-type,Accept,Cookie');
 
     return res.end();
   }
@@ -56,12 +62,6 @@ app.use((req, res, next) => {
 
   // return res;
 });
-
-app.use(cookieParser());
-
-app.use(bodyParser.json());
-
-app.use(requestLogger);
 
 app.use('/', routesUser, routesCard);
 
