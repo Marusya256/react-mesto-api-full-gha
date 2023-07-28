@@ -16,12 +16,14 @@ class Api {
 
   getInfoOwner() {
     return this._makeRequest('/users/me', {
+      credentials: 'include',
       headers: this._options.headers
     });
   }
 
   getInitialCards() {
     return this._makeRequest('/cards/', {
+      credentials: 'include',
       headers: this._options.headers
     });
   }
@@ -75,6 +77,7 @@ class Api {
 
 const api = new Api({
   baseUrl: 'https://api.mesto.galamm.nomoreparties.sbs',
+  // baseUrl: 'https://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }
