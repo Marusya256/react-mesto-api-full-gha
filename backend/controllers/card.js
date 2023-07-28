@@ -8,7 +8,7 @@ const getCards = (req, res, next) => {
   Card.find({})
     .populate('owner')
     .populate('likes')
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
@@ -18,7 +18,7 @@ const postCard = (req, res, next) => {
     name, link, owner: req.user._id, likes,
   })
     .then((card) => {
-      res.send({ data: card }); //
+      res.send(card); //
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -34,7 +34,7 @@ const deleteCard = (req, res, next) => {
     .then((card) => {
       if (req.user._id === card.owner._id.toString()) {
         Card.findByIdAndRemove(req.params.cardId).orFail(new NotFoundError('Документ с указанным ID не найден.'))
-          .then((newCard) => res.send({ data: newCard }));
+          .then((newCard) => res.send(newCard));
       } else {
         throw new NotOwnerError('Карточка не может быть удалена, т.к. вы не являетесь создателем карточки');
       }
@@ -54,7 +54,7 @@ const putlike = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   ).orFail(new NotFoundError('Документ с указанным ID не найден.'))
-    .then((newCard) => res.send({ data: newCard }))
+    .then((newCard) => res.send(newCard))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
         next(new ValidationError('Передан некорректный ID.'));
@@ -70,7 +70,7 @@ const deletelike = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   ).orFail(new NotFoundError('Документ с указанным ID не найден.'))
-    .then((newCard) => res.send({ data: newCard }))
+    .then((newCard) => res.send(newCard))
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
         next(new ValidationError('Передан некорректный ID.'));
