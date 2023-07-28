@@ -16,7 +16,6 @@ class MestoAuth {
   register (email, password) {
     return fetch(`${BASE_URL}/signup`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,7 +38,8 @@ class MestoAuth {
 
   getContent(token) {
     return fetch(`${BASE_URL}/users/me`, {
-      method: 'GET', 
+      method: 'GET',
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         // "Authorization" : `Bearer ${token}`
