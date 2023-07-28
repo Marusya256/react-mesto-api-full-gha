@@ -57,7 +57,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
 
-    // return res.end();
+    return res.end();
   }
 
   next();
@@ -66,6 +66,12 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routesUser, routesCard);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
