@@ -1,4 +1,4 @@
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const ERROR_CODE_BASE = 500;
 const ERROR_CODE_NOT_FOUND = 404;
@@ -121,3 +121,37 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
   .catch((res) => {
     res.status(ERROR_CODE_BASE).send({ message: 'Ошибка' });
   });
+
+
+//   server {
+//     listen 80;
+
+
+//     server_name api.mesto.galamm.nomoreparties.sbs;
+
+
+//     location / {
+//             proxy_pass http://localhost:3000;
+//             proxy_http_version 1.1;
+//             proxy_set_header Upgrade $http_upgrade;
+//             proxy_set_header Connection 'upgrade';
+//             proxy_set_header Host $host;
+//             proxy_cache_bypass $http_upgrade;
+//     }
+// }
+
+
+// server {
+//     listen 80;
+
+
+//     server_name mesto.galamm.nomoreparties.sbs;;
+
+
+//     root /home/galamdinovam/react-mesto-api-full-gha/frontend;
+
+
+//     location / {
+//       try_files $uri $uri/ /index.html
+//     }
+// }
