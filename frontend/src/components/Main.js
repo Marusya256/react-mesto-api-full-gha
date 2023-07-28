@@ -50,7 +50,8 @@ function Main(props) {
         </section>
         <section className="gallery">
           <div className="gallery__list">
-            {props.cards.map((card, i) => {
+            {console.log(props, props.cards),
+            props.cards.map((card, i) => {
               return <Card card={card} onCardClick={props.handleCardClick} onCardLike={props.handleCardLike} onCardDelete={props.handleCardDelete} key={card._id}/>
             })}
           </div>
