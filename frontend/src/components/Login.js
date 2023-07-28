@@ -33,10 +33,10 @@ function Login(props) {
 
     mestoAuth.authorize(useremail, userpassword)
       .then((data) => {
-        if (data.token){
+        if (data._id){
           localStorage.setItem('jwt', data._id);
           setFormValue({useremail: '', userpassword: ''});
-          props.handleLogin(data.token);
+          props.handleLogin(data._id);
           navigate('/my-profile', {replace: true});
         }
       })
