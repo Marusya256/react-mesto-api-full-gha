@@ -174,12 +174,14 @@ function App() {
     setIsInfoTooltipPopupOpen(true);
   }
 
-  //
+  //выход пользователя из аккаунта
 
   function handleSignOut() {
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('token');
-    navigate('/signin', {replace: true});
+    api.logOut().then(res => {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('token');
+      navigate('/signin', {replace: true});
+    })
   }
 
   return (

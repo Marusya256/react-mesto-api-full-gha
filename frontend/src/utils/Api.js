@@ -8,7 +8,7 @@ class Api {
         return result.json();
     else
         return Promise.reject(`Ошибка ${result.status}`);
-}
+  }
 
   _makeRequest(endpoint, options) {
       return fetch(this._options.baseUrl + endpoint, options).then(this._checkResponse);
@@ -76,6 +76,14 @@ class Api {
         method: isLiked ? 'DELETE' : 'PUT',
         credentials: 'include',
         headers: this._options.headers
+    });
+  }
+
+  logOut() {
+    return this._makeRequest('/users/me/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._options.headers,
     });
   }
 }
