@@ -174,6 +174,14 @@ function App() {
     setIsInfoTooltipPopupOpen(true);
   }
 
+  //
+
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
+    navigate('/signin', {replace: true});
+  }
+
   return (
       <div className="page">
         <CurrentUserContext.Provider value={currentUser}>
@@ -188,7 +196,7 @@ function App() {
               <Route  path="/signup" element={<Register onRegisteredFailed={handleRegisteredFailed} onRegisteredSuccess={handleRegisteredSuccess}/>}/>
               <Route  path="/signin" element={<Login handleLogin={tokenCheck} onRegisteredFailed={handleRegisteredFailed} onRegisteredSuccess={handleRegisteredSuccess}/>}/>
               <Route  path="/" element={loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />} />
-              <Route path="/my-profile" element={<ProtectedRoute loggedIn={loggedIn} cards={cards} handleCardClick={handleCardClick} handleCardLike={handleCardLike} handleCardDelete={handleCardDelete} setCards={setCards} openEditProfile={handleEditProfileClick} openAddPlace={handleAddPlaceClick} editAvatar={handleEditAvatarClick} userEmail={userEmail} element={Main}/>}/>
+              <Route path="/my-profile" element={<ProtectedRoute loggedIn={loggedIn} cards={cards} handleCardClick={handleCardClick} handleCardLike={handleCardLike} handleCardDelete={handleCardDelete} setCards={setCards} openEditProfile={handleEditProfileClick} openAddPlace={handleAddPlaceClick} editAvatar={handleEditAvatarClick} signOut={handleSignOut} userEmail={userEmail} element={Main}/>}/>
             </Routes>
             <Footer />            
           </CurrentCardContext.Provider>

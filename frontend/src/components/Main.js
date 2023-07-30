@@ -23,18 +23,16 @@ function Main(props) {
 
   //delete token
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  function signOut(){
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('token');
-    navigate('/signin', {replace: true});
+  function handleSignOut(){
+    props.signOut();
   }
 
 
   return (
     <main>
-      <Header buttonText={'Выйти'} userEmail={props.userEmail} onClick={signOut}/>
+      <Header buttonText={'Выйти'} userEmail={props.userEmail} onClick={handleSignOut}/>
       <div className="content">
         <section className="profile">
           <img className="profile__photo" src={currentUser.avatar} alt="Фото пользователя"/>
