@@ -126,7 +126,7 @@ function App() {
 
   function handleAddPlace(item) {
     api.postCards(item).then(newCard => {
-      setCards([newCard, ...cards]);      
+      setCards([...cards, newCard]);      
       closeAllPopups();
     }).catch(err => {
       alert(`failed to set user info, err: ${err}`);
@@ -139,7 +139,6 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     
     api.updateLike(card._id, isLiked).then((newCard) => {
-      console.log('newCard', newCard);
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     }).catch(err => {
       alert(`failed to update like, err: ${err}`);
