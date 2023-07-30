@@ -42,7 +42,7 @@ function App() {
     })
     //получение карточек с сервера
     api.getInitialCards().then(cards => {
-      setCards(cards);
+      setCards(cards.reverse());
     }).catch(err => {
       alert(`failed to get card info, err: ${err}`);
     })
@@ -126,7 +126,7 @@ function App() {
 
   function handleAddPlace(item) {
     api.postCards(item).then(newCard => {
-      setCards([...cards, newCard]);      
+      setCards([newCard, ...cards]);      
       closeAllPopups();
     }).catch(err => {
       alert(`failed to set user info, err: ${err}`);
