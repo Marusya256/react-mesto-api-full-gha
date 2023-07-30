@@ -100,7 +100,7 @@ const updateUser = (req, res, next) => {
     { name: req.body.name, about: req.body.about },
     { new: true },
   ).orFail(new NotFoundError('Пользователь с указанным ID не найден.'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new ValidationError('Переданы некорректные данные.'));
@@ -116,7 +116,7 @@ const updateAvatar = (req, res, next) => {
     { avatar: req.body.avatar },
     { new: true },
   ).orFail(new NotFoundError('Пользователь с указанным ID не найден.'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new ValidationError('Переданы некорректные данные.'));
