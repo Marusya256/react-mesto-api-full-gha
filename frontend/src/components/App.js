@@ -27,6 +27,8 @@ function App() {
   const [currentUser, setСurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
+  const [isGoodRequest, setIsGoodRequest] = React.useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = (email) => {
@@ -161,9 +163,7 @@ function App() {
     })
   }
   
-  // проверка запроса на регистрацию
-
-  const [isGoodRequest, setIsGoodRequest] = React.useState(false); 
+  // проверка запроса на регистрацию 
 
   function handleRegisteredFailed() {
     setIsGoodRequest(false);
