@@ -181,10 +181,7 @@ function App() {
 
   function handleSignOut() {  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     api.logOut().then(res => {
-      setIsLogIn(false);
-      if (!isLogIn) {
-        navigate('/signin', {replace: true});
-      }
+      navigate(loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />);
     })
   }
 
