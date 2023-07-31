@@ -19,6 +19,8 @@ import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 function App() {
 
+  //проверка токена
+
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState('');
 
@@ -27,11 +29,7 @@ function App() {
 
   const [isGoodRequest, setIsGoodRequest] = React.useState(false);
 
-  const [isLogIn, setIsLogIn] = React.useState(false);  
-
   const navigate = useNavigate();
-
-  //проверка токена
 
   const handleLogin = (email) => {
     setLoggedIn(true);
@@ -57,7 +55,6 @@ function App() {
       .then(res => {
         handleLogin(res.email);
         navigate('/my-profile', {replace: true});
-        setIsLogIn(true);
       })
       .catch(err => {
         alert(`failed to check token, err: ${err}`);
@@ -180,9 +177,18 @@ function App() {
   //выход пользователя из аккаунта
 
   function handleSignOut() {  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // api.logOut().then(res => {
+    //   // localStorage.removeItem('jwt');
+    //   // localStorage.removeItem('token');
+    //   navigate('/signin', {replace: true});
+    // })    setLoggedIn(false);
+
+    // api.logOut();
+
     api.logOut().then(res => {
+      setLoggedIn(false);
       navigate(loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />);
-    })
+    });
   }
 
   return (
