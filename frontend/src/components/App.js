@@ -176,10 +176,8 @@ function App() {
 
   //выход пользователя из аккаунта
 
-  function handleSignOut() {
+  function handleSignOut() {  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     api.logOut().then(res => {
-      localStorage.removeItem('jwt');
-      localStorage.removeItem('token');
       navigate('/signin', {replace: true});
     })
   }
