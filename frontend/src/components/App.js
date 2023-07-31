@@ -183,12 +183,9 @@ function App() {
     //   navigate('/signin', {replace: true});
     // })    setLoggedIn(false);
 
-    // api.logOut();
-
-    api.logOut().then(res => {
-      setLoggedIn(false);
-      navigate(loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />);
-    });
+    api.logOut();
+    setLoggedIn(false);
+    navigate(loggedIn ? <Navigate to="/my-profile" replace /> : <Navigate to="/signin" replace />);
   }
 
   return (
