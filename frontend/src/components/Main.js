@@ -23,8 +23,6 @@ function Main(props) {
 
   //delete token
 
-  // const navigate = useNavigate();
-
   function handleSignOut(){
     props.signOut();
   }
